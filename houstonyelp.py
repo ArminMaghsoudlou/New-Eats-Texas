@@ -1,5 +1,6 @@
 from bs4 import BeautifulSoup
 import requests
+import csv
 
 page = requests.get('https://www.yelp.com/search?find_desc=Best+New+Restaurants&find_loc=Houston%2C+TX')
 soup = BeautifulSoup(page.content, 'html.parser')
@@ -47,4 +48,5 @@ for i in range(len(name_list)):
     f.write("\n" + name_list[i] + "," + loc_list[i])
 
 f.close()
+
 

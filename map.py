@@ -1,12 +1,23 @@
 import folium
-import houstonyelp
+from geocoding import name_lst
+from geocoding import loopThruCSV
+from geocoding import geoloc_list_lng
+from geocoding import geoloc_list_lat
+
 m = folium.Map(location =[31.9686, -99.9018], zoom_start = 6)
 
 #Global tooltip
 
 tooltip = 'Click for more info'
 
-# creating markers
+#markers
+
+loopThruCSV("yelp_houston.csv")
+
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
 
 
 folium.Marker([29.7604, -95.3698],
