@@ -1,7 +1,7 @@
 import requests
 import json
-import geocoder
 import geopy
+import geocoding
 
 from geopy.geocoders import Nominatim
 geolocator = Nominatim(user_agent="neweats")
@@ -21,6 +21,13 @@ def loopThruCSV(filename):
             continue
         if '9403B' in col[1]:
             continue
+        if "Rest_Name" in col[0]:
+            continue
+        if " An A.M." in col[1]:
+            continue
+        if "Serving Austin" in col[1]:
+            continue
+
         else:
             geoInput = (col[1] + "," + col[2])
             location = geolocator.geocode(geoInput)
@@ -34,7 +41,7 @@ def loopThruCSV(filename):
 
 
 loopThruCSV("yelp_houston.csv")
-
+#loopThruCSV("yelp_austin.csv")
 
 '''   
 api_key = 'AIzaSyCEJZDxb1j5SFTOqPCHVLfdb84HlxQECNw'

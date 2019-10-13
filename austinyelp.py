@@ -1,7 +1,7 @@
 from bs4 import BeautifulSoup
 import requests
 
-page = requests.get('https://www.yelp.com/search?find_desc=Best+New+Restaurants&find_loc=Houston%2C+TX')
+page = requests.get('https://www.yelp.com/search?find_desc=New%20Restaurants&find_loc=Austin%2C%20TX')
 soup = BeautifulSoup(page.content, 'html.parser')
 mains = soup.find_all('div', {"lemon--div__373c0__1mboc mainAttributes__373c0__1r0QA arrange-unit__373c0__1piwO arrange-unit-fill__373c0__17z0h border-color--default__373c0__2oFDT"})
 secondarys = soup.find_all('div', {"lemon--div__373c0__1mboc secondaryAttributes__373c0__7bA0w arrange-unit__373c0__1piwO border-color--default__373c0__2oFDT"})
@@ -20,7 +20,7 @@ print(location)
 #print(whenOpened)
 
 
-filename = "yelp_houston.csv"
+filename = "yelp_austin.csv"
 f = open(filename, "w", encoding="utf-8")
 header = "Rest_Name, Street Address, City, State"
 f.write(header)
@@ -37,7 +37,7 @@ for main in mains:
         print(None)
 for secondary in secondarys:
     try:
-        location = (secondary.find("span").text) + "," + " Houston, Texas"
+        location = (secondary.find("span").text) + "," + " Austin, Texas"
         #print("Location: " + location)
         loc_list.append(location)
     except:

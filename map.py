@@ -4,7 +4,7 @@ from geocoding import loopThruCSV
 from geocoding import geoloc_list_lng
 from geocoding import geoloc_list_lat
 
-m = folium.Map(location =[31.9686, -99.9018], zoom_start = 6)
+m = folium.Map(location =[31.9686, -99.9018], zoom_start = 7)
 
 #Global tooltip
 
@@ -19,6 +19,11 @@ for name in range(len(name_lst)):
             popup = name_lst[name],
             tooltip=tooltip).add_to(m)
 
+loopThruCSV("yelp_austin.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
 
 folium.Marker([29.7604, -95.3698],
               popup= '<strong> Location One </strong>',
