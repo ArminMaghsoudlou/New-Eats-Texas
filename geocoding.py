@@ -1,5 +1,4 @@
 import requests
-import json
 import geopy
 import geocoding
 
@@ -25,9 +24,18 @@ def loopThruCSV(filename):
             continue
         if " An A.M." in col[1]:
             continue
-        if "Serving Austin" in col[1]:
+        if "Serving" in col[1]:
             continue
-
+        if "704 Elm Ave" in col[1]:
+            continue
+        if "201 E Central Texas" in col[1]:
+            continue
+        if "4425 W Wadley Ave" in col[1]:
+            continue
+        if "610 N Big Spring St" in col[1]:
+            continue
+        if "7220 Interstate 40 West" in col[1]:
+            continue
         else:
             geoInput = (col[1] + "," + col[2])
             location = geolocator.geocode(geoInput)
@@ -36,18 +44,15 @@ def loopThruCSV(filename):
             lngVal = location.longitude
             geoloc_list_lng.append(lngVal)
             name_lst.append(col[0])
+            #print(location.latitude, location.longitude, col[1])
 
-            #print(location.latitude, location.longitude)
 
-
-loopThruCSV("yelp_houston.csv")
+#loopThruCSV("yelp_houston.csv")
 #loopThruCSV("yelp_austin.csv")
+#loopThruCSV("yelp_dallas.csv")
+#loopThruCSV("yelp_waco.csv")
+#loopThruCSV("yelp_odessa.csv")
+#loopThruCSV("yelp_lubbock.csv")
+#loopThruCSV("yelp_amarillo.csv")
 
-'''   
-api_key = 'AIzaSyCEJZDxb1j5SFTOqPCHVLfdb84HlxQECNw'
-url = 'https://maps.googleapis.com/maps/api/geocode/json?'
-place = input()
-res_ob = requests.get(url + 'address =' + place + '&key =' + api_key)
-x = res_ob.json()
-print(x)
-'''
+

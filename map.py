@@ -25,6 +25,39 @@ for name in range(len(name_lst)):
             popup = name_lst[name],
             tooltip=tooltip).add_to(m)
 
+loopThruCSV("yelp_dallas.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
+
+loopThruCSV("yelp_waco.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
+
+loopThruCSV("yelp_odessa.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
+
+loopThruCSV("yelp_lubbock.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
+
+loopThruCSV("yelp_amarillo.csv")
+for name in range(len(name_lst)):
+    folium.Marker([geoloc_list_lat[name], geoloc_list_lng[name]],
+            popup = name_lst[name],
+            tooltip=tooltip).add_to(m)
+
+
+
+
 folium.Marker([29.7604, -95.3698],
               popup= '<strong> Location One </strong>',
               tooltip=tooltip).add_to(m)
